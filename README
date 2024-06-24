@@ -1,0 +1,27 @@
+# Unbrick DJI Mavic Battery
+
+This readme file provides instructions on how to use the Arduino Uno R3 script to unbrick the DJI Mavic battery by overriding the PF flag. Please note that this script is designed for the Arduino Uno R3 but should work with other Arduino boards as well (although it has not been tested).
+
+## How It Works
+
+The script utilizes the SoftwareWire library to communicate with the battery via I2C. It performs the following steps:
+
+1. Initializes the SoftwareWire library and starts the serial communication.
+2. Reads and prints the battery information, including the serial number, cycle count, voltage, design capacity, manufacture date, state of health, and more.
+3. Sends the unseal command to the battery using the custom unseal key. This allows access to protected battery features.
+4. Sends the PF clear command to clear the PF flag, which unbricks the battery.
+5. Repeats steps 3 and 4 for a specified number of iterations (adjustable in the script).
+
+## Usage
+
+To use this script, follow these steps:
+
+1. Connect your Arduino Uno R3 or compatible board to the DJI Mavic battery using the appropriate I2C pins (SDA on pin 6 and SCL on pin 5).
+2. Upload the script to your Arduino board.
+3. Open the serial monitor at a baud rate of 9600.
+4. Power on the DJI Mavic battery.
+5. The script will read and display the battery information, send the unseal and PF clear commands, and repeat this process for the specified number of iterations.
+
+You might need a bench power supply to charge the battery a little bit if it's too dead. You also might need to bypass the BMS by opening the battery and hooking the bench power supply directly to the battery terminal. I had the power supply at around 16.2 volts and 1 AMPs and that worked for me.
+
+Please note that modifying the script or using it with other Arduino boards may require adjustments to the pin assignments and I2C communication settings.
