@@ -6,7 +6,6 @@
 
 # all piO related files
 pio
-platformio.ini
 lib
 include
 .pio
